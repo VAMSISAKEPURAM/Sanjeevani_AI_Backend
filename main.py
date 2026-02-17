@@ -10,7 +10,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://sanjeevani-ai-frontend-2lu9poyn4-vamsis-projects-fc511db6.vercel.app"
+        "https://sanjeevani-ai-frontend.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -23,3 +23,4 @@ app.include_router(router)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
+
