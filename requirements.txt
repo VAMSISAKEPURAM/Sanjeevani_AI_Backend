@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pymysql
+mysql-connector-python
+tensorflow
+numpy
+pillow
+scikit-learn
+huggingface-hub
+python-dotenv
+python-multipart
+requests
