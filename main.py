@@ -5,30 +5,25 @@ from app.routes import router
 
 app = FastAPI()
 
-# -----------------------------
-# CORS Configuration
-# -----------------------------
-FRONTEND_URL = os.getenv(
-    "FRONTEND_URL",
-    "https://sanjeevani-ai-frontend.vercel.app"
-)
-
+# --------------------------------------------------
+# CORS Configuration (Allow all Vercel deployments)
+# --------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# -----------------------------
+# --------------------------------------------------
 # Include Routes
-# -----------------------------
+# --------------------------------------------------
 app.include_router(router)
 
-# -----------------------------
-# Health Check (VERY IMPORTANT)
-# -----------------------------
+# --------------------------------------------------
+# Health Check
+# --------------------------------------------------
 @app.get("/")
 def health_check():
     return {"status": "Backend running successfully"}
